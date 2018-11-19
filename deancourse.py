@@ -60,6 +60,8 @@ def dean_dep():
     for xnxq in dean_xnxq():
         soup = dean_request('/pkudean/course/kcb.php', 'GET', {'xnxq': xnxq})
         table = soup.find('table')
+        if not table:
+            continue
         for tr in table.find_all('tr'):
             a = tr.find('a')
             if a is None:
